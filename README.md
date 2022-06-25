@@ -24,4 +24,4 @@
 ========================================================
 generate random number and use it to convert this number of chars into uppercase
 
-![A test image](screenshot.png)
+![A test image](https://sun9-80.userapi.com/impf/Gzva3E8MJ9avLXhb_Qy_z0V74aOUHMeoPUKgfg/6phqUMwXq_Y.jpg?size=1280x617&quality=95&sign=51dcc09035348f17ea1becfb69f20324&type=album)

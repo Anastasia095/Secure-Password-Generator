@@ -6,52 +6,36 @@ generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
 
-  function lowercase() {
-    var userInput = confirm("include lowercase?");
-    return userInput;
-  }
-  
-  function uppercase() {
-    var userInput = confirm("include uppercase?");
-    return userInput;
-  }
-  
-  function numeric() {
-    var userInput = confirm("include numeric?");
-    return userInput;
-  } 
-  
-  function specialCharacters() {
-    var userInput = confirm("include specialCharacters?");
-    return userInput;
-  }
-  
-  function passLength() {
-    var userInput = prompt("Enter length of the password (Min 8 and Max 126)");
-      while (userInput < 8 || userInput > 126) {
-        userInput = prompt("Invalid Entery! Please try again (Min 8 and Max 126)");
+  var L = 0;
+  var U = 0;
+  var N = 0;
+  var S = 0;
+  var min = 0;
+  var max = 0;
+  var password = [];
+  var selectionCounter = 0;
+  var j = 0;
+  var leftToGenerate = 0;
+  var getRandom = 0;
+
+  function getUserSelection() {
+    L = confirm("include lowercase?");
+    U = confirm("include uppercase?");
+    N = confirm("include numeric?");
+    S = confirm("include specialCharacters?");
+    max = prompt("Enter length of the password (Min 8 and Max 126)");
+      while (max < 8 || max > 126) {
+        max = prompt("Invalid Entery! Please try again (Min 8 and Max 126)");
       }
     
-    return userInput;
   }
-
-var min = 0;
-var max = passLength();   
-console.log("DisplayMax: " + max);
-
-  
-var password = [];
-var L = lowercase();
-var U = uppercase();
-var N = numeric();
-var S = specialCharacters();
 
   function counter() {
     var count = 0;
     if (L) {
       count++;
     }
-  
+
     if (U) {
       count++;
     }
@@ -64,44 +48,26 @@ var S = specialCharacters();
       count++;
     }
   
-    console.log("counter function test:" + count);
-
     return count;
   }
 
-  var selectionCounter = counter();
-  console.log("Selection Counter Test:" + selectionCounter);
+  getUserSelection() ;
+  selectionCounter = counter();
 
-  // if (selectionCounter < 1) {
-  //   alert("You have to select at least 1 character type");
-  //   L = lowercase();
-  //   U = uppercase();
-  //   N = numeric();
-  //   S = specialCharacters();
-  // }
-
-  var j = 0;
   if (L) {
     function generateLower() {
-          // var test;
     // Returns a random integer from 97 to 122 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
     password[j] = Math.floor(Math.random() * (122 - 97 + 1) + 97);
     // converts num to UTF-8 https://www.w3schools.com/html/html_charset.asp
     password[j] = String.fromCharCode(password[j]);
-    // console.log("log stringTest: " + stringTest);
-    console.log("log password test: " + password[j]);
     j++
     }
     generateLower();
   }
-
-  // console.log("log J test:" + j);
-
   if (U) {
     function generateUpper() {
       password[j] = Math.floor(Math.random() * (90 - 65 + 1) + 65);
       password[j] = String.fromCharCode(password[j]);
-      console.log("log uppercase test: " + password[j])
       j++
     }
     generateUpper();
@@ -109,7 +75,6 @@ var S = specialCharacters();
   if (N) {
     function generateNum() {
       password[j] = Math.floor(Math.random() * (9 - 0 + 1) + 0);
-      console.log("log number test: " + password[j])
       j++
     }
     generateNum();
@@ -119,18 +84,15 @@ var S = specialCharacters();
       const symbols = '!#$%&()*+,-./:;<=>?@[\]^_{|}~';
       //that will generate random number to land  on random array cell in symbols
       password[j] = symbols[Math.floor(Math.random() * symbols.length)];
-      console.log("log symbols test: " + password[j])
       j++;
     }
     generateSymbol();
   }
   
-  var leftToGenerate = max - selectionCounter;
-  console.log("LeftToGenerate" + leftToGenerate);
-
-  var getRandom;
+  leftToGenerate = max - selectionCounter;
 
   for (var index = 0; index < leftToGenerate; index++) {
+    //there are 4 categories of characters, at least 1 will be selected, this is why max random value is set to 3 (randomly generating char from the 3 categories that are left
     getRandom = Math.floor(Math.random() * (3 - 0 + 1) + 0);
     if (getRandom == 0){
       if (L) 
@@ -155,11 +117,12 @@ var S = specialCharacters();
   }
   //converting array inso string with no commas
   var generatedPassword = password.join("");
-  console.log("Generated password test: " + generatedPassword);
   console.log("Generated password test: " + password);
+  console.log("Generated password test: " + generatedPassword);
 
   return generatedPassword;
 }
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
