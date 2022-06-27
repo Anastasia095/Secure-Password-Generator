@@ -18,13 +18,21 @@ function generatePassword() {
     U = confirm("include uppercase?");
     N = confirm("include numeric?");
     S = confirm("include specialCharacters?");
+    while (L,U,N,S == false) {
+      alert("You have to select at least 1 category")
+      L = confirm("include lowercase?");
+      U = confirm("include uppercase?");
+      N = confirm("include numeric?");
+      S = confirm("include specialCharacters?");
+    }
+
     max = prompt("Enter length of the password (Min 8 and Max 126)");
-      while (max < 8 || max > 126) {
-        max = prompt("Invalid Entery! Please try again (Min 8 and Max 126)");
-      }
-    
-  }
+    while (max < 8 || max > 126) {
+      max = prompt("Invalid Entery! Please try again (Min 8 and Max 126)");
+    }
   
+  }
+
   getUserSelection();
 
   while (password.length < max)
