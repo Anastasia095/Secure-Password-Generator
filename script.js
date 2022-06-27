@@ -14,16 +14,21 @@ function generatePassword() {
   var j = 0;
 
   function getUserSelection() {
-    L = confirm("include lowercase?");
-    U = confirm("include uppercase?");
-    N = confirm("include numeric?");
-    S = confirm("include specialCharacters?");
-    while (L,U,N,S == false) {
-      alert("You have to select at least 1 category")
+    function getInput(){
       L = confirm("include lowercase?");
       U = confirm("include uppercase?");
       N = confirm("include numeric?");
       S = confirm("include specialCharacters?");
+    }
+    getInput();
+
+    while (L == false && U == false && N == false && S == false) {
+      var confirmation = confirm("You have to select at least 1 category");
+      if (confirmation) {
+        getInput();
+      }
+      else 
+        return;
     }
 
     max = prompt("Enter length of the password (Min 8 and Max 126)");
