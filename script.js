@@ -97,15 +97,10 @@ function generatePassword() {
   
     return array;
   }
-  
   //******************** */
-
-  console.log("Test password befor convertion" + password);
+  
   shuffle(password);
-  console.log("Test password befor convertion" + password);
   var generatedPassword = password.join("");
-  console.log("Generated password test: " + password);
-  console.log("Generated password test: " + generatedPassword);
 
   return generatedPassword;
 }
