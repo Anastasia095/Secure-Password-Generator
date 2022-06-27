@@ -31,9 +31,9 @@ function generatePassword() {
         return;
     }
 
-    max = prompt("Enter length of the password (Min 8 and Max 126)");
-    while (max < 8 || max > 126) {
-      max = prompt("Invalid Entery! Please try again (Min 8 and Max 126)");
+    max = prompt("Enter length of the password (Min 8 and Max 128)");
+    while (max < 8 || max > 128) {
+      max = prompt("Invalid Entery! Please try again (Min 8 and Max 128)");
     }
   
   }
